@@ -6,6 +6,7 @@ import 'dart:collection';
 import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
@@ -104,6 +105,26 @@ class AudioController {
 
   /// Preloads all sound effects.
   Future<void> initialize() async {
+    if (!kIsWeb) {
+      final AudioContext audioContext = AudioContext(
+        iOS: AudioContextIOS(
+          category: AVAudioSessionCategory.ambient,
+          options: [
+            AVAudioSessionOptions.defaultToSpeaker,
+            AVAudioSessionOptions.mixWithOthers,
+          ],
+        ),
+        /*android: AudioContextAndroid(
+          isSpeakerphoneOn: true,
+          stayAwake: true,
+          contentType: AndroidContentType.sonification,
+          usageType: AndroidUsageType.assistanceSonification,
+          audioFocus: AndroidAudioFocus.none,
+        ),*/
+      );
+      // NEEDED THIS audioContext or iPhone volume didn't work only BGM I could hardly hear
+      AudioPlayer.global.setGlobalAudioContext(audioContext);
+    }
     _log.info('Preloading sound effects');
     // This assumes there is only a limited number of sound effects in the game.
     // If there are hundreds of long sound effect files, it's better
