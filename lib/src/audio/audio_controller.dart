@@ -34,6 +34,16 @@ class AudioController {
 
   ValueNotifier<AppLifecycleState>? _lifecycleNotifier;
 
+  final AudioContext audioContext = AudioContext(
+    iOS: AudioContextIOS(
+    category: AVAudioSessionCategory.ambient,
+    options: [
+      AVAudioSessionOptions.defaultToSpeaker,
+      AVAudioSessionOptions.mixWithOthers,
+    ],
+  ),
+  );
+
   /// Creates an instance that plays music and sound.
   ///
   /// Use [polyphony] to configure the number of sound effects (SFX) that can
@@ -105,25 +115,9 @@ class AudioController {
 
   /// Preloads all sound effects.
   Future<void> initialize() async {
-    if (!kIsWeb) {
-      final AudioContext audioContext = AudioContext(
-        iOS: AudioContextIOS(
-          category: AVAudioSessionCategory.ambient,
-          options: [
-            AVAudioSessionOptions.defaultToSpeaker,
-            AVAudioSessionOptions.mixWithOthers,
-          ],
-        ),
-        /*android: AudioContextAndroid(
-          isSpeakerphoneOn: true,
-          stayAwake: true,
-          contentType: AndroidContentType.sonification,
-          usageType: AndroidUsageType.assistanceSonification,
-          audioFocus: AndroidAudioFocus.none,
-        ),*/
-      );
-      // NEEDED THIS audioContext or iPhone volume didn't work only BGM I could hardly hear
-      AudioPlayer.global.setGlobalAudioContext(audioContext);
+    _musicPlayer.setAudioContext(audioContext);
+    for(var player in _sfxPlayers) {
+      player.setAudioContext(audioContext);
     }
     _log.info('Preloading sound effects');
     // This assumes there is only a limited number of sound effects in the game.
