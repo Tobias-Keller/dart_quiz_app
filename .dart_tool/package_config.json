@@ -242,6 +242,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "glitcheffect",
+      "rootUri": "file:///Users/tobiaskeller/.pub-cache/hosted/pub.dartlang.org/glitcheffect-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///Users/tobiaskeller/.pub-cache/hosted/pub.dartlang.org/glob-2.1.1",
       "packageUri": "lib/",
@@ -680,7 +686,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-02-13T12:14:14.241893Z",
+  "generated": "2023-02-13T15:39:16.854722Z",
   "generator": "pub",
   "generatorVersion": "2.18.0"
 }

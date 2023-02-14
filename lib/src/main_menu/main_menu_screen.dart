@@ -12,6 +12,7 @@ import '../games_services/games_services.dart';
 import '../settings/settings.dart';
 import '../style/palette.dart';
 import '../style/responsive_screen.dart';
+import 'package:glitcheffect/glitcheffect.dart';
 
 class MainMenuScreen extends StatelessWidget {
   const MainMenuScreen({super.key});
@@ -45,12 +46,12 @@ class MainMenuScreen extends StatelessWidget {
                     'DART QUIZ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Permanent Marker',
-                      fontSize: 55,
-                      height: 1,
-                      color: Colors.black
+                        fontFamily: 'Permanent Marker',
+                        fontSize: 55,
+                        height: 1,
+                        color: Colors.black
                     ),
-                  ),
+                  )
                 ),
                 _gap,
                 Transform.rotate(
@@ -65,7 +66,7 @@ class MainMenuScreen extends StatelessWidget {
                         color: Colors.black
                     ),
                   ),
-                ),
+                )
               ],
             )
           ),
@@ -126,8 +127,22 @@ class MainMenuScreen extends StatelessWidget {
                 _hideUntilReady(
                   ready: gamesServicesController.signedIn,
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                    ),
                     onPressed: () => gamesServicesController.showLeaderboard(),
-                    child: const Text('Leaderboard'),
+                    child: const Text('Die Rangliste',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Permanent Marker',
+                        fontSize: 25,
+                        height: 1,
+                      ),),
                   ),
                 ),
               ],

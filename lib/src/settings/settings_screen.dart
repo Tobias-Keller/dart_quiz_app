@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../ads/banner_ad_widget.dart';
 import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
 import '../in_app_purchase/in_app_purchase.dart';
@@ -108,6 +109,8 @@ class SettingsScreen extends StatelessWidget {
                   );
                 },
               ),
+              _gap,
+              BannerAdWidget(),
               _gap,
             ],
           ),

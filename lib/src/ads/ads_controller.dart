@@ -39,7 +39,7 @@ class AdsController {
     final adUnitId = defaultTargetPlatform == TargetPlatform.android
         ? 'ca-app-pub-3940256099942544/6300978111'
         // iOS
-        : 'ca-app-pub-3940256099942544/2934735716';
+        : 'ca-app-pub-3940256099942544/6300978111';
     _preloadedAd =
         PreloadedBannerAd(size: AdSize.mediumRectangle, adUnitId: adUnitId);
 

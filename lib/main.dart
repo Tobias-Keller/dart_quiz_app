@@ -12,6 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
@@ -85,13 +86,13 @@ void guardedMain() {
   //       Read the README for more info on each integration.
 
   AdsController? adsController;
-  // if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
-  //   /// Prepare the google_mobile_ads plugin so that the first ad loads
-  //   /// faster. This can be done later or with a delay if startup
-  //   /// experience suffers.
-  //   adsController = AdsController(MobileAds.instance);
-  //   adsController.initialize();
-  // }
+  if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
+    /// Prepare the google_mobile_ads plugin so that the first ad loads
+    /// faster. This can be done later or with a delay if startup
+    /// experience suffers.
+    adsController = AdsController(MobileAds.instance);
+    adsController.initialize();
+  }
 
   GamesServicesController? gamesServicesController;
     if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {

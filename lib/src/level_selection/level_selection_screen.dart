@@ -7,6 +7,7 @@ import 'package:game_template/src/main_menu/main_menu_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../ads/banner_ad_widget.dart';
 import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
 import '../player_progress/player_progress.dart';
@@ -47,7 +48,7 @@ class LevelSelectionScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 0),
                 Expanded(
                   child: ListView(
                     shrinkWrap: true,
@@ -80,6 +81,8 @@ class LevelSelectionScreen extends StatelessWidget {
                             ),
                           )
                         ),
+                      const SizedBox(height: 20,),
+                      BannerAdWidget(),
                     ],
                   ),
                 ),

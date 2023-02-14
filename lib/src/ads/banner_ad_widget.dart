@@ -57,7 +57,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
               '${_bannerAd.hashCode} now.');
           return SizedBox(
             width: _bannerAd!.size.width.toDouble(),
-            height: _bannerAd!.size.height.toDouble(),
+            height: 100,
             child: AdWidget(ad: _bannerAd!),
           );
         }
