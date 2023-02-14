@@ -2,7 +2,7 @@
     package="com.tobiaskeller.dartquiz">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="game_template"
+        android:label="Dart Quiz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
